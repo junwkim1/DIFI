@@ -26,10 +26,12 @@ To train enzyme classification using activation-based method of DIFI do:
 
 `python enzyme_nonenzyme_classification.py --non_num 60 --alpha 3`
 
-To reproduce the figures from enzyme classification use enzyme_eval.ipynb with the following trained models:
+To reproduce the figures from enzyme classification use `enzyme_eval.ipynb` with the following trained models:
 
 `high_attention_NONNUM_60_ALPHA_3.pth` for RN3
 
 `high_attention_ALPHA0.pth` for RN
 
 `high_attention_NONNUM_60_random_ALPHA_3.pth` for Ran3
+
+To reproduce the figures from alanine substitution use `enzyme_AA_substitution.ipynb` using the models above. 

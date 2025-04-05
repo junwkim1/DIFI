@@ -1,7 +1,7 @@
 """
     TensorFlow training code for
-    "Data-Integrated Semi-Supervised Attention Enhances Performance 
-    and Interpretability of Biological Classification Tasks"
+    "Semi-Supervised Data-Integrated Feature Importance Enhances Performance and
+    Interpretability of Biological Classification Tasks"
     
     This file includes:
      * binary classification training code which reproduces
@@ -139,7 +139,7 @@ def main():
         Y_test_orig = 1 - Y_test_orig
         Y_train_orig = 1 - Y_train_orig
         
-        # Display sample images
+        # To display sample images unquote the loop below
         images_iter = iter(X_train_orig)
         labels_iter = iter(Y_train_orig)
         plt.figure(figsize=(15, 15))
@@ -178,14 +178,6 @@ def main():
                 teacher_loss = tf.reduce_mean(tf.keras.losses.binary_crossentropy(batch_labels, teacher_outputs))
             teacher_grads = tape.gradient(teacher_loss, batch_inputs)
             teacher_saliency_map.append(teacher_grads)
-        '''
-        single = Saliency(conv_model)
-        grad_control = single.get_grad(tf.expand_dims(current_image/255.0, axis = 0))
-        plt.imshow(current_image.reshape((64, 64, 3)), cmap = 'gray')
-        plt.show()
-        plt.imshow(np.sum(grad_control.reshape((64, 64, 3)), axis=2), cmap='inferno', interpolation='nearest')
-        plt.colorbar() 
-        plt.show()'''
         
         alphas = [0, 300]
         #k=0.003
@@ -199,7 +191,7 @@ def main():
             )
             optimizer = tf.keras.optimizers.Adam()
             
-            EPOCHS = 120
+            EPOCHS = 150
             best_validation_accuracy = 0
             for epoch in range(EPOCHS):
                 batch_index = 0
